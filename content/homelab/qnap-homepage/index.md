@@ -24,6 +24,7 @@ Celem było uruchomienie lekkiego, czytelnego dashboardu dla homelabu, który po
 
 ## Co pokazuje dashboard
 
+![Homepage na QNAP](./homepage1.PNG)
 Na ekranie głównym widać sekcje:
 - Monitoring
 - Home Automation
