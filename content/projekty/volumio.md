@@ -1,3 +1,8 @@
+---
+title: Volumio
+description: Monitoring i konfiguracja Volumio na Raspberry Pi 3.
+---
+
 # Volumio RPi3 – Monitoring i Konfiguracja
 
 > Notatka z konfiguracji monitoringu Volumio na Raspberry Pi 3 (192.168.0.178)  
