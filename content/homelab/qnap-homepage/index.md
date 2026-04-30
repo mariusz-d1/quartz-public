@@ -156,6 +156,7 @@ Na screenie połączenie jest oznaczone jako „Niezabezpieczona”, więc obecn
 
 ## Powiązane
 
+- [Instalacja Homepage na QNAP TS-431P](./instalacja-homepage-na-qnapie)
 - [QNAP TS-431P](../qnap-ts431p/)
 - [Monitoring domowy](../../projekty/monitoring-domowy/)
 - [Obserwowalność](../../serwery/obserwowalnosc/)
