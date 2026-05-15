@@ -248,3 +248,28 @@ scrape_configs:
 - [x] Prometheus scrape volumio-rpi3 co 10s
 - [x] Grafana Dashboard 1860 "Volumio RPi3 Monitoring"
 - [x] Screen blanking ustawiony na 15 minut (consoleblank=900)
+
+
+
+---
+## Architektura
+
+```mermaid
+flowchart LR
+    A[RPi3 / Volumio / 192.168.0.178] --> B[node_exporter :9100]
+    B --> C[RPi4 / Prometheus :9090]
+    C --> D[Grafana :3000]
+```
+
+## Przepływ monitoringu
+
+```mermaid
+sequenceDiagram
+    participant V as Volumio
+    participant P as Prometheus
+    participant G as Grafana
+
+    P->>V: scrape /metrics
+    G->>P: query metrics
+    G-->>User: dashboard
+```
