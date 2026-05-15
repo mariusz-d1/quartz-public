@@ -273,3 +273,14 @@ sequenceDiagram
     G->>P: query metrics
     G-->>User: dashboard
 ```
+
+----
+
+## ArchitekturaTestowy diagram
+
+```mermaid
+flowchart LR
+    A[Moduł A] --> B[Moduł B]
+    B --> C[Moduł C]
+    C --> D[Moduł D]
+```
