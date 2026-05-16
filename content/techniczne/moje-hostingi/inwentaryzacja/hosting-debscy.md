@@ -1,92 +1,48 @@
----
-title: Inwentaryzacja hostingu debscy
----
-
 # Inwentaryzacja hostingu debscy
 
 ## Dane podstawowe
 
-- Nazwa robocza: hosting debscy
-- Dostawca:
-- Panel:
-- Login administracyjny:
-- Status: aktywny / do uporządkowania / do wygaszenia
+- Nazwa robocza: hosting `debscy`
+- Panel: DirectAdmin
+- Konto / serwer w panelu: `mariuszd_`
+- IP serwera: `91.237.52.33`
+- Serwer FTP: `s143.cyber-folks.pl`
+- Serwer poczty: `s143.cyber-folks.pl`
+- Port SSH: `222` (aktywny)
+
+## Użycie i limity
+
+- Miejsce na dysku: `26880 / 35840 MB`
+- Transfer: `0.64 GB / bez limitu`
+- E-maile: `9`
+- Konta FTP: `4`
+- Bazy danych: `6`
+- Liczba plików: `107610 / 1000000`
+- Wysłane e-maile: `0 / 5000`
+
+---
 
 ## Domeny i subdomeny
 
-- domena:
-- subdomena:
-- uwagi:
+### `debscy.idl.pl`
+- widoczna w panelu
+- domena w cyber_Folks: tak
+- certyfikat SSL: ważny
+- monitoring SEO: nieaktywny / brak
+- domena główna hostingu
 
-## DNS
+### `d11.debscy.idl.pl`
+- widoczna w panelu
+- certyfikat SSL: ważny
+- aktywna instalacja Drupal
 
-- strefa DNS:
-- ważne rekordy A:
-- ważne rekordy CNAME:
-- rekordy MX:
-- rekordy TXT:
-- inne rekordy:
+### `dokuwiki.debscy.idl.pl`
+- widoczna w panelu
+- brak aktywnego / ważnego certyfikatu w widoku panelu
+- domena istnieje jako osobny katalog w hostingu
+- obecnie nie wygląda na działającą pełną instalację
+- do rozważenia uruchomienie
 
-## Strony WWW
-
-- domena:
-  - katalog:
-  - technologia:
-  - status:
-  - uwagi:
-
-## Poczta
-
-- skrzynka:
-  - status:
-  - używana / nieużywana:
-  - uwagi:
-
-- alias / przekierowanie:
-  - status:
-  - uwagi:
-
-## Bazy danych
-
-- baza:
-  - aplikacja:
-  - status:
-  - uwagi:
-
-## FTP
-
-- konto FTP:
-  - do czego służy:
-  - status:
-
-## SSL
-
-- domena:
-  - typ certyfikatu:
-  - status:
-  - automatyczne odnowienie:
-  - uwagi:
-
-## Przekierowania
-
-- źródło:
-- cel:
-- status:
-
-## Cron / zadania cykliczne
-
-- zadanie:
-- częstotliwość:
-- do czego służy:
-
-## Ryzyka i zależności
-
-- Co może przestać działać po zmianie DNS:
-- Co zależy od poczty:
-- Co zależy od konkretnego katalogu lub bazy:
-
-## Wstępna ocena
-
-- Co na pewno jest potrzebne:
-- Co wygląda na stare:
-- Co wymaga weryfikacji:
+### `mojawiki.pl`
+- widoczna w panelu
+- brak 
