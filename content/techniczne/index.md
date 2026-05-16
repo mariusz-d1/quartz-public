@@ -14,6 +14,8 @@ Do codziennego użycia zapamiętaj ten zestaw:
 powershell
 - npx quartz build --serve
 
+Uwaga: przy komendach typu --serve wpisywać myślniki ręcznie, bo po wklejeniu może wejść en dash / em dash i npm zwraca błąd non-ascii dash.
+
 potem w przeglądarce:
 
 
