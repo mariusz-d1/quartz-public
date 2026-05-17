@@ -7,16 +7,37 @@ title: Inwentaryzacja hostingu regulus
 ## Dane podstawowe
 
 - Nazwa robocza: hosting regulus
-- Dostawca:
-- Panel:
-- Login administracyjny:
+- Dostawca:Cyber Folks
+- Panel:DirectAdmin
+- Login administracyjny: 'reguladm'
 - Status: aktywny / do uporządkowania / do wygaszenia
+
+
+## Użycie i limity
+
+- Miejsce na dysku: `2299 / 10240 MB`
+- Transfer: `0.24 GB / bez limitu`
+- E-maile: `2`
+- Konta FTP: `2`
+- Bazy danych: `7`
+- Liczba plików: `137539	1000000`
+- Wysłane e-maile: `0 / 5000`
 
 ## Domeny i subdomeny
 
-- domena:
-- subdomena:
-- uwagi:
+### `reguladm.ayz.pl`
+- widoczna w panelu
+- domena w cyber_Folks: tak
+- certyfikat SSL: ważny
+- monitoring SEO: nieaktywny / brak
+- domena główna hostingu
+
+### `regulus.net.pl`
+- widoczna w panelu
+- domena w cyber_Folks: tak
+- certyfikat SSL: ważny
+- monitoring SEO: nieaktywny / brak
+- subdomeny : 'dokuwiki.regulus.net.pl'
 
 ## DNS
 
