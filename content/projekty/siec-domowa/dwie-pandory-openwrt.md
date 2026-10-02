@@ -1,7 +1,7 @@
 ---
 title: Dwa routery TP-Link z OpenWrt — od repeatera do wspólnego Wi-Fi
-draft: true
-publish: false
+draft: false
+publish: true
 public-safe: needs-review
 tags:
   - openwrt
