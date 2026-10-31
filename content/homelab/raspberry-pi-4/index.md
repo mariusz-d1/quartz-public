@@ -70,9 +70,35 @@ Dla starszej drukarki jest to użyteczne uzupełnienie jej panelu WWW: wybrane i
 
 Metryki pokazują, co zmienia się w czasie. Logi pomagają ustalić, jakie zdarzenie mogło wywołać zmianę. W tym środowisku wybrane komunikaty urządzeń ESP Easy trafiają przez syslog do lokalnego odbiornika, a następnie do Loki. Grafana służy także do ich przeglądania.
 
-## Organizacja usług i danych
+## Kontenery w codziennym użytkowaniu
 
-Usługi są podzielone na projekty Docker Compose. Dane trwałe wielu aplikacji znajdują się poza zapisywalną warstwą kontenera, w katalogach podłączanych z hosta. W środowisku występują też wolumeny zarządzane przez Dockera.
+Docker pozwala mi uruchamiać na jednym Raspberry Pi wiele usług o różnych zadaniach. Każda aplikacja ma własne środowisko i zależności, a Docker Compose opisuje sposób jej uruchomienia oraz powiązania z pozostałymi elementami.
+
+Kontenery współdzielą zasoby i jądro systemu gospodarza. Awaria hosta lub jego dysku może więc przerwać działanie całego zestawu. Podział aplikacji na kontenery ułatwia administrację, ale sam w sobie nie zapewnia wysokiej dostępności.
+
+### Podział według zadań
+
+Usługi organizuję w projekty Compose. Powiązane elementy, takie jak aplikacja i jej baza danych, można w ten sposób opisać i utrzymywać razem. W środowisku występują zarówno usługi wykorzystywane na co dzień, jak i osobne projekty laboratoryjne.
+
+Główne grupy to automatyka domowa, monitoring, obsługa logów i narzędzia pomocnicze opisane w tabeli wyżej. Osobne środowisko Zabbixa pozwala rozwijać kolejny sposób obserwacji infrastruktury.
+
+Projekty nadal korzystają ze wspólnego procesora, pamięci, dysku i połączenia sieciowego. Przy dodawaniu aplikacji trzeba więc brać pod uwagę obciążenie całego Raspberry Pi.
+
+### Obraz, kontener i dane aplikacji
+
+W dokumentacji rozróżniam trzy elementy:
+
+| Element | Znaczenie |
+| --- | --- |
+| Obraz | Pakiet aplikacji i zależności używany do tworzenia kontenera |
+| Kontener | Uruchomiony lub zatrzymany egzemplarz utworzony z obrazu |
+| Dane trwałe | Ustawienia i zawartość aplikacji zachowywane poza zapisywalną warstwą kontenera |
+
+Dane trwałe wielu aplikacji znajdują się w katalogach podłączanych z hosta, czyli bind mountach. W środowisku występują również wolumeny zarządzane przez Dockera. Oba rodzaje przechowywania danych wymagają uwzględnienia w dokumentacji i planie kopii zapasowych.
+
+Samo zachowanie obrazu lub pliku Compose nie wystarcza do odzyskania historii pomiarów, ustawień aplikacji czy zawartości bazy danych. Trwałość danych poza kontenerem również nie zastępuje backupu.
+
+### Organizacja konfiguracji i danych
 
 Przy dokumentowaniu i planowaniu odtworzenia rozróżniam:
 
@@ -82,7 +108,19 @@ Przy dokumentowaniu i planowaniu odtworzenia rozróżniam:
 - metryki i logi;
 - materiały historyczne oraz projekty wstrzymane.
 
-Ten podział pomaga określić, co wymaga kopii, a co można odtworzyć z konfiguracji. Sam plik Compose nie zawiera wszystkich danych potrzebnych do odzyskania działającej aplikacji.
+Ten podział pomaga określić, co wymaga kopii, a co można odtworzyć z konfiguracji. Bazy danych wymagają dodatkowo metody zapewniającej spójność kopii.
+
+### Projekty testowe i wstrzymane
+
+Zatrzymany kontener może być pozostałością próby, zadaniem jednorazowym albo elementem projektu, do którego planuję wrócić. Sam jego status nie jest podstawą do usunięcia.
+
+Przed zmianą ustalam przeznaczenie projektu, jego zależności oraz miejsce przechowywania danych. Materiały historyczne zachowuję do czasu wyjaśnienia ich roli.
+
+### Aktualizacje i możliwość powrotu
+
+Przed aktualizacją trzeba sprawdzić wybraną wersję obrazu, zgodność z ARM64 oraz wymagania aplikacji. Częścią przygotowania jest zabezpieczenie konfiguracji i danych.
+
+Nowa wersja aplikacji może zmienić format danych lub strukturę bazy. W takiej sytuacji samo uruchomienie starszego obrazu nie musi wystarczyć do cofnięcia aktualizacji. Sposób powrotu należy przygotować przed zmianą.
 
 ## Czego nauczyła mnie eksploatacja?
 
@@ -90,7 +128,7 @@ Ten podział pomaga określić, co wymaga kopii, a co można odtworzyć z konfig
 
 Status `Up` informuje o działającym procesie kontenera. Nie dowodzi, że aplikacja otrzymuje poprawne dane albo wykonuje swoje zadania.
 
-Podobnie odpowiedź endpointu metryk potwierdza możliwość jego odczytu, ale nie musi oznaczać, że docelowe urządzenie jest skutecznie monitorowane. Sprawdzam również obecność oczekiwanych metryk i aktualność danych.
+Podobnie odpowiedź endpointu metryk potwierdza możliwość jego odczytu, ale nie musi oznaczać, że docelowe urządzenie jest skutecznie monitorowane. Sprawdzam również obecność oczekiwanych metryk i aktualność danych. Przykładowo dostępny panel Grafany potwierdza działanie interfejsu, ale dopiero świeże pomiary na wykresie pomagają potwierdzić działanie całego toru zbierania danych.
 
 ### Healthcheck też wymaga sprawdzenia
 
